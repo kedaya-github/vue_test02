@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>考核</title>
+    <script src="vue-2.6.10.js"></script>
+
+<!--2019-10-16考核-->
+</head>
+<body>
+
+<div id="app">
+    {{name}} <br>
+    有 {{num}} 面风墙
+    <input type="button" v-on:click="add" value="+">
+    <input type="button" v-on:click="back" value="-">
+
+</div>
+
+<script type="text/javascript">
+    var max = (a,b,c) => a>b ? a>c ? a:c : b>c ? b:c;
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            name:"亚索",
+            num:10
+        },
+        methods:{
+            add(){
+               this.num += 10;
+            },
+            back(){
+                this.num -= 10;
+            }
+        }
+    });
+
+
+    var o = (a,b,c) => {
+        if (a%2 == 0){console.log(a)}
+        if (b%2 == 0){console.log(b)}
+        if (c%2 == 0){console.log(c)}
+    }
+
+
+
+</script>
+</body>
+</html>

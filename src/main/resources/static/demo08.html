@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>只允许输入0-9数字</title>
+    <script src="vue-2.6.10.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <!-- keydown="setMsg($event)") -->
+    <input type="text" v-model="msg" @keyup="setMsg($event)">  <br>
+
+    <input type="text" @keydown.13="mouse(1)"> 框1 <br>
+    <input type="text" @keydown.13="mouse(2)"> 框2 <br>
+    <input type="submit" @click="login()"> 提交框 <br>
+
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"干干干"
+        },
+        methods:{
+            setMsg(e){
+                //事件触发，会产生一个事件对象 event。 在event对象中包含着所有与事件相关的信息
+                console.log(e.keyCode);
+               // if (e.keyCode == 8){   //按下删除键
+               //
+               //  } else if (e.keyCode < 96 || e.keyCode > 105){
+               //      //阻止默认行为
+               //      // this.msg = this.msg.replace(/\D/g,'');
+               //      e.preventDefault();   //事件对象的 preventDefault方法可以阻止 本事件所要产生的效果。
+               //       // e.returnValue = false;                       //比如 keydown 的效果时按下键盘输入文字。但是被阻止了，就不会在输入文字
+               //      console.log(e.defaultPrevented)  //表示event事件对象是否调用了 preventDefault方法
+               //  }
+               // // e.returnValue = true;
+
+                this.msg = this.msg.replace(/[^0-9]/ig , '');
+
+            },
+            mouse(index){
+                var inputs = document.getElementsByTagName("input");  //获取所有的 input 标签
+                inputs[index +1 ] .focus();  //将当前按击 的input标签 的索引 +1 为下一个input标签。 注入焦点 focus
+            },
+            login(){
+                alert("登录！");
+            }
+        }
+    });
+
+    var a1 = 0;
+    var a2 = 10;
+    var result = a1 + "-" + a2;
+    console.log(eval(result));   // eval数学运算符，计算出  result 的数学结果
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue操作1</title>
+    <script src="vue-2.6.10.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <!-- 在父容器中，可以使用绑定搞得 vue对象中的data数据 -->
+    {{ name }} <br>
+    {{ msg }}  <br>
+    <p v-html="ht"></p>
+
+    <h1 v-text="msg"></h1>
+    <input type="text" v-model="msg">
+
+    <button type="text" v-bind:title="name"></button>
+
+    <input type="button" v-bind:title="name" v-bind:value="name">
+
+    <hr>
+
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        //使用vue必须 绑定父容器 app
+        el:"#app",
+        //data 为vue中绑定的数据
+        data:{
+            name:"卖窝窝头的老大爷",
+            msg:"窝窝头，一块钱四个，嘿嘿！",
+            ht:"<h1>妈妈，我想吃烤山药。吃大块的。两块够吗，够了。谢谢谢妈妈</h1>"
+        }
+    });
+
+</script>
+
+
+
+</body>
+</html>

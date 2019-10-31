@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性</title>
+    <script src="vue-2.6.10.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <!-- 测试使用计算属性 -->
+    {{bath}}
+
+</div>
+
+<script type="text/javascript">
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            birthday:new Date()
+        },
+        methods:{
+
+        },
+        computed:{
+            bath(){
+                //计算属性的本质是方法，使用的目的是属性。 必须要有返回值
+                //名字不能与 其他区域中定义的 名字重复
+                return this.birthday.getFullYear() + "---" + (this.birthday.getMonth()+1) + "---" + this.birthday.getDate();
+            }
+        }
+    })
+
+</script>
+
+</body>
+</html>

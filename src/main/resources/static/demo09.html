@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue-2.6.10.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <input type="text" @keydown="show($event)">
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        methods:{
+            show(e){
+
+                console.log(e.key);
+                
+                if (e.key == "Backspace") {
+                    return;
+                }
+
+                let a = e.key.replace(/[^0-9]/ig , '');
+
+                console.log(a);
+                if (!a) {
+                    e.preventDefault();
+                }
+            }
+        }
+
+
+    })
+
+
+
+</script>
+
+
+</body>
+</html>

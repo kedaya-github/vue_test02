@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue时间测试</title>
+    <script src="vue-2.6.10.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="button" value="点我" @click="show()"> <br>
+    <input type="text" @keydown="keydown($event)">
+    <input type="text" @keyup="keyup($event)">
+
+    <br>
+
+    <!-- 测试鼠标 -->
+    <div style="width: 100px; height: 100px;background-color: red"
+        @mouseover="mouseover()"  v-on:mouseout="mouseout()"
+    >
+
+    </div>
+
+    <br>
+
+    <!-- *********************************** -->
+
+
+    <div style="width: 200px ; height: 200px; background-color: red" @mouseover="divOver1()">
+        <div style="width: 100px; height: 100px; background-color: blue" @mouseover.stop="divOver2()">
+
+        </div>
+
+    </div>
+
+    <a href.prevent="https//www.baidu.com" @click.prevent="aShow()">baidu一下</a>
+
+    <form action="http://www.baidu.com" @submit.prevent>
+        <input type="submit">
+    </form>
+
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        methods:{
+            show(){
+                console.log("点我了");
+            },
+            keydown(e){
+                console.log(e.keyCode);
+            },
+            keyup(e){
+                console.log(e.keyCode);
+            },
+            mouseover(){
+                console.log("鼠标进来了");
+            },
+            mouseout(){
+                console.log("鼠标移出了");
+            },
+            divOver1(){
+                console.log("大div进来了");
+            },
+            divOver2(){
+                console.log("小div进来了");
+            },
+            aShow(){
+                console.log("a标签处理逻辑");
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

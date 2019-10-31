@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue-2.6.10.js"></script>
+
+</head>
+<body>
+<div id="app">
+    {{num}} <br>
+    <input type="button" value="-" v-on:click="back">
+    <input type="button" value="+" v-on:click="add">
+
+</div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            num:10
+        },
+        methods:({
+            add:function () {
+                this.num++;
+            },
+            // back(){
+            //     this.num--;
+            // }
+            back : () => vm.num--,
+        })
+    })
+
+
+
+</script>
+
+
+</body>
+</html>

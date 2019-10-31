@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>双向绑定</title>
+    <script src="vue-2.6.10.js"></script>
+</head>
+<body>
+<div id="app">
+
+    <br>
+
+    <input type="checkbox" v-model="favor" value="抽烟">抽烟
+    <input type="checkbox" v-model="favor" value="喝酒">喝酒
+    <input type="checkbox" v-model="favor" value="烫头">烫头
+    <input type="checkbox" v-model="favor" value="马杀鸡">马杀鸡
+
+    <input type="text" v-model="favor">
+
+    <br>
+
+    <input type="radio" value="sir" v-model="sex">男
+    <input type="radio" value="girl" v-model="sex">女
+    <input type="radio" value="unKnow" v-model="sex">不详
+    <textarea v-model="sex"></textarea>
+
+    <br>
+
+    <select v-model="province">
+        <option v-for="(item,index) in items" :value="item">{{item}} "*********"  {{index}}</option>
+    </select>
+
+</div>
+
+<script type="text/javascript">
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            text:"123456",
+            favor:[],  //兴趣爱好，接收checkbox的复选框
+            sex:'sir',
+            items:['河南','山东','山西'],  //用于循环的 数组
+            province:'山东'
+        }
+    })
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for循环</title>
+    <script src="vue-2.6.10.js"></script>
+</head>
+<body>
+<div id="app">
+
+    <table border="1">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>雌雄</th>
+        </tr>
+        <tr v-for="(user,index) in users" v-show="user.sex=='女'">
+            <td>{{index+1}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.sex}}</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <div v-if="num==1">
+        {{num}}
+    </div>
+    <div v-else-if="num==2">
+        {{num}}
+    </div>
+    <div v-else>
+        {{num}}
+    </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            users:[
+                {"name":"jack",age:20,sex:"男"},
+                {name:"tom",age:30,sex:"男"},
+                {name:"dabai",age:10,sex:"男"},
+                {name:"秀琴",age:10,sex:"女"},
+                {name:"田雨",age:10,sex:"女"}
+            ],
+            num:1
+        },
+        methods:{
+
+        }
+    })
+</script>
+</body>
+</html>

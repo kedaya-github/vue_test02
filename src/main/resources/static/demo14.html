@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue-2.6.10.js"></script>
+    <script src="js/axios-v0.19.0.js"></script>
+</head>
+<body>
+<div id="app">
+    <form action="#">
+    <input type="file" @change="getFile($event)"> <br>
+    <input type="text" v-model="user.username">
+    <input type="button" value="提交" @click="sub()">
+    </form>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            file: '',
+            user:{
+            }
+        },
+        methods:{
+            getFile(e){
+                this.file = e.target.files[0];
+            },
+            sub(){
+                let data = new FormData();
+                data.append("file",this.file);
+                data.append("username",this.user.username);
+                axios.post("/user/shangchuan" , data)
+                    .then(res => {
+                        alert("成功");
+                    })
+            }
+        }
+
+    })
+
+
+
+
+</script>
+</body>
+</html>

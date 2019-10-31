@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        [v-cloak]{
+            display: none;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div id="app" >
+
+    <p v-cloak>{{msg}}</p>
+    <p v-text="msg"></p>
+
+</div>
+
+<script src="vue-2.6.10.js"></script>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:'传智大学，一统江湖，千秋万代'
+        },
+        methods:{
+        },
+        // 创建前
+        beforeCreate(){
+            showData("创建前",this);
+        },
+        created(){
+            showData("创建完成",this);
+        },
+        // 双向数据绑定前
+        beforeMount(){
+            showData("双向数据绑定前",this)
+        },
+        // 双向数据绑定完成
+        mounted(){
+            showData("双向数据绑定完成",this)
+        },
+        beforeUpdate(){
+            showData("更新前",this)
+        },
+        updated(){
+            showData("更新完成",this)
+        },
+        beforeDestroy(){
+            showData("销毁前",this)
+        },
+        destroyed(){
+            showData("销毁完成",this)
+        }
+    });
+
+    function showData(process,obj){
+        console.log(process);
+        console.log(obj.msg);
+        console.log(document.getElementById("app").innerHTML);
+        console.log("----------------------------------")
+    }
+
+
+
+
+
+</script>
+
+</body>
+</html>

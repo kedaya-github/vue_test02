@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>测试axios</title>
+    <script src="vue-2.6.10.js"></script>
+    <script src="axios-0.18.0.js"></script>
+
+</head>
+
+<body>
+  <div id="app">
+      <table border="1">
+          <tr>
+              <th>名字</th>
+              <th>年龄</th>
+              <th>职位</th>
+          </tr>
+          <tr v-for="user in users">
+              <td>{{user.name}}</td>
+              <td>{{user.age}}</td>
+              <td>{{user.level}}</td>
+          </tr>
+
+
+      </table>
+
+      <input type="button" value="按钮" @click="updateData()">
+
+  </div>
+
+<script type="text/javascript">
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            users:[]   //接收后台的参数
+        },
+        methods:{
+            getData(){
+                //使用axios 访问后台
+                axios.get("./data/users.json")
+                    .then((res) => {         //使用 箭头函数 ， this的指向 为vue对象
+                        console.log(this);  //使用原始方法 function 则this不是vue实例对象，而是window界面对象，表示this被重置
+                        console.log(res);  //res为response 响应返回对象  data为 属性 里面是返回的数据
+                        vm.users = res.data;
+                    });
+            },
+            updateData(){
+                axios.post("data/users.json",)
+                    .then((red) =>{
+                        console.log(red);
+                    })
+            }
+        },
+        created(){
+            console.log(this);
+            this.getData();
+        }
+    })
+
+
+
+
+</script>
+
+</body>
+</html>

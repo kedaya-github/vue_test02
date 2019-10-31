@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue-2.6.10.js"></script>
+</head>
+<body>
+<div id="app">
+    {{msg}}
+</div>
+
+<script type="text/javascript">
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            name:'亚索',
+            msg:"E往无前"
+        },
+        methods:{
+            q(){
+                console.log(this.name+"哈塞给");
+            },
+            w:(a = 10) => console.log(vm.name+"---"+a),
+            max:(a,b,c) => a>b? a>c ? a: c : b>c? b:c
+        },
+        beforeCreate(){   //实例创建前， 没有数据信息
+            QWER("亚索1",this);
+        },
+        created(){
+            QWER("亚索2",this);
+        },
+        beforeMount(){
+            QWER("亚索3",this);
+        },
+        mounted(){
+            QWER("亚索4",this);
+        },
+        beforeUpdate(){
+            QWER("亚索5",this);
+        },
+        updated(){
+            QWER("亚索6",this);
+        }
+    });
+
+    function QWER(thisN, obj) {
+       console.log(thisN);
+       console.log(obj.msg);
+       console.log(document.getElementById("app").innerText);
+        console.log("-------------------------------------------");
+        obj.q();
+        console.log("-------------------------------------------");
+    }
+
+
+
+</script>
+</body>
+</html>
